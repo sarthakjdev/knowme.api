@@ -5,6 +5,6 @@ const router = express.Router()
 router.get('/tweets', twitterController.getTweets)
 router.get('/tweet', twitterController.getTweetById)
 router.post('/', twitterController.addTweet)
-router.delete('/:id', twitterController.deleteTweet)
+router.delete('/', twitterController.deleteTweet)
 
 export default router
