@@ -5,7 +5,7 @@ export default class AboutContoller {
     /**
      *  Get About
      */
-     static async getAbout(req: Request, res:Response) {
+    static async getAbout(req: Request, res:Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -16,11 +16,11 @@ export default class AboutContoller {
     /**
      *  Update About
      */
-         static async updateAbout(req: Request, res:Response) {
-            try {
-                return res.status(200).send(messages.basic)
-            } catch (error) {
-                return res.status(500).send(messages.serverError)
-            }
+    static async updateAbout(req: Request, res:Response) {
+        try {
+            return res.status(200).send(messages.basic)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
         }
+    }
 }

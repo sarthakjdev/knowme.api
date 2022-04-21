@@ -5,7 +5,7 @@ export default class ProjectController {
     /**
      *  Get Projects
      */
-     static async getProjects(req: Request, res:Response) {
+    static async getProjects(req: Request, res:Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -16,13 +16,13 @@ export default class ProjectController {
     /**
      *  Update Project
      */
-         static async updateProject(req: Request, res:Response) {
-            try {
-                return res.status(200).send(messages.basic)
-            } catch (error) {
-                return res.status(500).send(messages.serverError)
-            }
+    static async updateProject(req: Request, res:Response) {
+        try {
+            return res.status(200).send(messages.basic)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
         }
+    }
 
     /**
      *  Add Project
@@ -38,11 +38,11 @@ export default class ProjectController {
     /**
      *  Delete Project
      */
-         static async deleteProject(req: Request, res:Response) {
-            try {
-                return res.status(200).send(messages.basic)
-            } catch (error) {
-                return res.status(500).send(messages.serverError)
-            }
+    static async deleteProject(req: Request, res:Response) {
+        try {
+            return res.status(200).send(messages.basic)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
         }
+    }
 }

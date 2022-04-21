@@ -5,20 +5,26 @@ module.exports = {
         jest: true,
     },
     parserOptions: {
-        ecmaVersion: 2020,
+        project: './tsconfig.json',
+        ecmaVersion: 2021,
+        
     },
+    parser: '@typescript-eslint/parser',
     extends: [
+        'eslint:recommended',
         'airbnb-base',
+        'airbnb-typescript/base',
+        'plugin:@typescript-eslint/recommended'
     ],
     plugins: [
         'import',
     ],
     rules: {
         'import/extensions': [
-            'error',
+            'never',
             {
+                ts: true,
                 js: true,
-                svg: true,
             },
         ],
         'no-underscore-dangle': 'off',
@@ -27,7 +33,9 @@ module.exports = {
         'no-else-return': ['error', { allowElseIf: false }],
         'class-methods-use-this': 'off',
         indent: ['error', 4, { SwitchCase: 1 }],
+        '@typescript-eslint/indent': ['error', 4, { SwitchCase: 1 }],
         semi: ['error', 'never'],
+        '@typescript-eslint/semi': ['error', 'never'],
         'no-multiple-empty-lines': ['error', { max: 1 }],
         'max-len': 'off',
         'new-cap': ['error', {

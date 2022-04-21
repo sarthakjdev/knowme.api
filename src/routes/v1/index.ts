@@ -1,12 +1,11 @@
 import express from 'express'
-import experienceRoutes from '@routes/v1/experience.route'
-import aboutRoutes from '@routes/v1/about.route'
-import projectRoutes from '@routes/v1/projects.route'
-import twitterRoutes from '@routes/v1/twitter.route'
-import blogRoutes from '@routes/v1/blogs.route'
+import experienceRoutes from '@routes/v1/experienceRoute'
+import aboutRoutes from '@routes/v1/aboutRoute'
+import projectRoutes from '@routes/v1/projectsRoute'
+import twitterRoutes from '@routes/v1/twitterRoute'
+import blogRoutes from '@routes/v1/blogsRoute'
 
 const router = express.Router()
-
 
 router.use('/projects', projectRoutes)
 router.use('/about', aboutRoutes)

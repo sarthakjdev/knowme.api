@@ -1,0 +1,10 @@
+import express from 'express'
+import twitterController from '@controllers/v1/twitterController'
+const router = express.Router()
+
+router.get('/tweets', twitterController.getTweets)
+router.get('/tweet', twitterController.getTweetById)
+router.post('/', twitterController.addTweet)
+router.delete('/:id', twitterController.deleteTweet)
+
+export default router

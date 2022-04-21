@@ -16,13 +16,13 @@ export default class ExperienceController {
     /**
      *  Update experience
      */
-         static async updateExperience(req: Request, res:Response) {
-            try {
-                return res.status(200).send(messages.basic)
-            } catch (error) {
-                return res.status(500).send(messages.serverError)
-            }
+    static async updateExperience(req: Request, res:Response) {
+        try {
+            return res.status(200).send(messages.basic)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
         }
+    }
 
     /**
      *  Add experience
