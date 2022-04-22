@@ -2,8 +2,6 @@ import { Request, Response } from 'express'
 import messages from '@constants/messages'
 import { twitterAxiosClient } from '@utils/axiosClient'
 import config from '@configs/config'
- console.log("config ", config);
-
 export default class TwitterController {
     /**
      *  Get Tweets
@@ -11,9 +9,9 @@ export default class TwitterController {
     static async getTweets(req: Request, res:Response) {
         try {
             const twitterResponse = await twitterAxiosClient(`/users/${config.TWITTER_USER_ID}/tweets`)
-
             return res.status(200).json(twitterResponse.data.data)
         } catch (error) {
+            console.log("error ", error);
             return res.status(500).send(messages.serverError)
         }
     }
@@ -24,7 +22,9 @@ export default class TwitterController {
     static async getTweetById(req: Request, res:Response) {
         try {
             const { id } = req.query
-            const { data } = await twitterAxiosClient.get(`/tweets/${id}`)
+            const {data} = await twitterAxiosClient.get(`/tweets/${id}`)
+
+
 
             return res.status(200).json(data)
         } catch (error) {
