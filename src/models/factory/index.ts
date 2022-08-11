@@ -1,8 +1,38 @@
+import prisma from "@lib/prisma"
+
 export default class Factory {
     /**
-     * factory methods
+     * get all experiences
      */
-    static async factoryMethods(): Promise<string> {
-        return 'Here you can put methods related to dbs queries and all'
+    static async getAllExperiences(): Promise<void> {
+        
+    }
+
+/**
+ * get all experiences
+ */
+    static async getAllBlogs(): Promise<void> {
+
+    }
+
+ /**
+* get all experiences
+*/
+    static async getAllProjects(): Promise<void> {
+
+    }
+
+ /**
+ * get all experiences
+ */
+    static async getExperience(): Promise<void> {
+
+    }
+
+/**
+* get all experiences
+*/
+    static async getBlog(): Promise<void> {
+
     }
 }

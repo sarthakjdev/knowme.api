@@ -1,9 +1,9 @@
 import express from 'express'
-import experienceRoutes from '@routes/v1/experienceRoute'
-import aboutRoutes from '@routes/v1/aboutRoute'
-import projectRoutes from '@routes/v1/projectsRoute'
-import twitterRoutes from '@routes/v1/twitterRoute'
-import blogRoutes from '@routes/v1/blogsRoute'
+import experienceRoutes from '@routes/v1/experience'
+import aboutRoutes from '@routes/v1/about'
+import projectRoutes from '@routes/v1/projects'
+import twitterRoutes from '@routes/v1/twitter'
+import blogRoutes from '@routes/v1/blogs'
 
 const router = express.Router()
 

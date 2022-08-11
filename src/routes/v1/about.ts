@@ -1,5 +1,5 @@
 import express from 'express'
-import aboutContoller from '@controllers/v1/aboutController'
+import aboutContoller from '@controllers/v1/about'
 
 const router = express.Router()
 

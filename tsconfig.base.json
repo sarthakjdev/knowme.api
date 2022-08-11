@@ -1,6 +1,7 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
+        "declaration": true,
         "alwaysStrict": true,
         "charset": "UTF-8",
         "esModuleInterop": true,
@@ -18,7 +19,9 @@
             "@constants/*": ["./src/constants/*"],
             "@routes/*":["./src/routes/*"],
             "@configs/*": ["./src/configs/*"],
-            "@utils/*": ["./src/utils/*"]
+            "@utils/*": ["./src/utils/*"],
+            "@lib/*": ["./src/lib/*"]
+
         },
         "typeRoots": ["./global.d.ts"]
     },

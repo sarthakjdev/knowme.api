@@ -5,7 +5,18 @@ export default class BlogContoller {
     /**
      *  Get Blogs
      */
-    static async getBlogs(req: Request, res:Response) {
+    static async getBlogs(req: Request, res: Response) {
+        try {
+            return res.status(200).send(messages.basic)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
+        }
+    }
+
+/**
+ *  Get ALl Blogs
+ */
+    static async getAllBlogs(req: Request, res: Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -16,7 +27,7 @@ export default class BlogContoller {
     /**
      *  Get Blog By Id
      */
-    static async getBlogById(req: Request, res:Response) {
+    static async getBlogById(req: Request, res: Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -27,7 +38,7 @@ export default class BlogContoller {
     /**
      *  Add Blog
     */
-    static async addBlog(req: Request, res:Response) {
+    static async addBlog(req: Request, res: Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -38,7 +49,7 @@ export default class BlogContoller {
     /**
      *  Delete Blog
     */
-    static async deleteBlog(req: Request, res:Response) {
+    static async deleteBlog(req: Request, res: Response) {
         try {
             return res.status(200).send(messages.basic)
         } catch (error) {
