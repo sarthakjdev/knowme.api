@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  mongo:
+    container_name: knowme-api-mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: knowme
+      MONGO_INITDB_ROOT_PASSWORD: knowme
+      MONGO_INITDB_DATABASE: knowme
+    volumes:
+      - knowme-data:/var/lib/mongodb/data 
+    ports:
+      - "27017:27017"
+  
+volumes:
+  knowme-data:
