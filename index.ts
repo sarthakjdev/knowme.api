@@ -6,6 +6,7 @@ import cors from 'cors'
 import ready from './src/controllers/ready'
 // requiring routes files :
 import serverRoute from './src/routes/index'
+import logger from '@utils/logger'
 const port = config.PORT || 5000
 
 const app = express()
@@ -17,5 +18,5 @@ app.get('/', ready)
 
 app.listen(port, () => {
     // eslint-disable-next-line no-console
-    console.log(`Server is listenning on ${port}`)
+    logger.info(`Server is listenning on ${port}`)
 })

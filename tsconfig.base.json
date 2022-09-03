@@ -20,7 +20,10 @@
             "@routes/*":["./src/routes/*"],
             "@configs/*": ["./src/configs/*"],
             "@utils/*": ["./src/utils/*"],
-            "@lib/*": ["./src/lib/*"]
+            "@lib/*": ["./src/lib/*"],
+            "@factory/*": ["./src/models/factory/*"],
+            "@api/*": ["./src/models/api/*"],
+            "@helpers/*": ["./src/helpers/*"],
 
         },
         "typeRoots": ["./global.d.ts"]

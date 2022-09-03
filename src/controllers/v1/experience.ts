@@ -1,37 +1,43 @@
-import { Request, Response } from 'express'
-import messages from '@constants/messages'
+import { Request, Response } from "express";
+import messages from "@constants/messages";
 
 export default class ExperienceController {
     /**
-     *  Get Experience
+     * Get Experience
+     * @static
+     * @memberof ExperienceController
      */
-    static async getExperience(req: Request, res:Response) {
+    static async getExperience(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            return res.status(200).send(messages.basic);
         } catch (error) {
-            return res.status(500).send(messages.serverError)
+            return res.status(500).send(messages.serverError);
         }
     }
 
     /**
-     *  Update experience
+     * Update experience
+     * @static
+     * @memberof ExperienceController
      */
-    static async updateExperience(req: Request, res:Response) {
+    static async updateExperience(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            return res.status(200).send(messages.basic);
         } catch (error) {
-            return res.status(500).send(messages.serverError)
+            return res.status(500).send(messages.serverError);
         }
     }
 
     /**
-     *  Add experience
+     * Add experience
+     * @static
+     * @memberof ExperienceController
      */
-    static async addExperience(req: Request, res:Response) {
+    static async addExperience(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            return res.status(200).send(messages.basic);
         } catch (error) {
-            return res.status(500).send(messages.serverError)
+            return res.status(500).send(messages.serverError);
         }
     }
 }

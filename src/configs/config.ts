@@ -21,6 +21,8 @@ interface ENV {
     HASHNODE_PERSONAL_ACCESS_TOKEN: string | undefined
     OEMBED_BASE_URL: string | undefined
     TWITTER_USERNAME: string | undefined
+    JWT_SECRET_KEY: string | undefined
+    DATABASE_URL: string | undefined
 }
 
 interface Config {
@@ -37,6 +39,9 @@ interface Config {
     HASHNODE_PERSONAL_ACCESS_TOKEN: string
     OEMBED_BASE_URL: string
     TWITTER_USERNAME: string
+    JWT_SECRET_KEY: string
+    DATABASE_URL: string
+
 }
 
 // Loading process.env as ENV interface
@@ -54,6 +59,8 @@ const getConfig = (): ENV => ({
     HASHNODE_PERSONAL_ACCESS_TOKEN: process.env.HASHNODE_PERSONAL_ACCESS_TOKEN,
     OEMBED_BASE_URL: process.env.OEMBED_BASE_URL,
     TWITTER_USERNAME: process.env.TWITTER_USERNAME,
+    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+    DATABASE_URL: process.env.DATABASE_URL
 })
 
 // Throwing an Error if any field was undefined we don't
