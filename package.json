@@ -15,7 +15,7 @@
     "dev:db-server": "npm run dev:db && npm run dev",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "db-migrate": "npx prisma migrate dev --name init --preview-feature"
+    "db-migrate": "npx prisma generate && npx prisma db push"
   },
   "keywords": [],
   "author": {

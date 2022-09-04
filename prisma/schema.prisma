@@ -11,7 +11,8 @@ datasource db {
 }
 
 model Users {
-  email     String    @id @map("_id") @db.ObjectId
+  id        String    @id @map("_id") @db.ObjectId
+  email     String    @unique
   name      String?
   password  String
   authToken String?
