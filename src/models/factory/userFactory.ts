@@ -1,5 +1,5 @@
-import prisma from "@lib/prisma";
-import { Users } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { Users } from '@prisma/client'
 
 export default class UserFactory {
     /**

@@ -1,12 +1,13 @@
 import express from 'express'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import dotenv from 'dotenv/config'
 import config from '@configs/config'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import cors from 'cors'
+import logger from '@utils/logger'
 import ready from './src/controllers/ready'
 // requiring routes files :
 import serverRoute from './src/routes/index'
-import logger from '@utils/logger'
+
 const port = config.PORT || 5000
 
 const app = express()

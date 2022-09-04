@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import messages from "@constants/messages";
-import BlogFactory from "@factory/BlogFactory";
+import { Request, Response } from 'express'
+import messages from '@constants/messages'
+import BlogFactory from '@factory/BlogFactory'
 
 export default class BlogContoller {
     /**
@@ -10,9 +10,9 @@ export default class BlogContoller {
      */
     static async getBlogs(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -23,23 +23,11 @@ export default class BlogContoller {
      */
     static async getAllBlogs(req: Request, res: Response) {
         try {
-            const blogs = await BlogFactory
-            return res.status(200).send(messages.basic);
-        } catch (error) {
-            return res.status(500).send(messages.serverError);
-        }
-    }
+            const blogs = await BlogFactory.getAllBlogs()
 
-    /**
-     * Get Blog By Id
-     * @static
-     * @memberof BlogController
-     */
-    static async getBlogById(req: Request, res: Response) {
-        try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).json(blogs)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -50,9 +38,9 @@ export default class BlogContoller {
      */
     static async addBlog(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -63,9 +51,9 @@ export default class BlogContoller {
      */
     static async deleteBlog(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 }

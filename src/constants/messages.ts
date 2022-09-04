@@ -18,5 +18,4 @@ const messages = {
     badReq: 'Bad Request',
 }
 
-
 export default messages

@@ -60,7 +60,7 @@ const getConfig = (): ENV => ({
     OEMBED_BASE_URL: process.env.OEMBED_BASE_URL,
     TWITTER_USERNAME: process.env.TWITTER_USERNAME,
     JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
-    DATABASE_URL: process.env.DATABASE_URL
+    DATABASE_URL: process.env.DATABASE_URL,
 })
 
 // Throwing an Error if any field was undefined we don't
@@ -70,6 +70,7 @@ const getConfig = (): ENV => ({
 // definition.
 
 const getVerifiedConfig = (config: ENV): Config => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(config)) {
         if (value === undefined) {
             throw new Error(`Missing key ${key} in config.env`)

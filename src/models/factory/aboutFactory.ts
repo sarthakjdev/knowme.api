@@ -1,8 +1,7 @@
-import prisma from "@lib/prisma";
-import { About } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { About } from '@prisma/client'
 
 export default class AboutFactory {
-
     /**
      * create about me
      * @static
@@ -14,8 +13,8 @@ export default class AboutFactory {
                 name: 'Sarthak Jain',
                 mobNo: '9643500545',
                 introduction: '',
-                email: 'contact.sarthakjain@gmail.com'
-            }
+                email: 'contact.sarthakjain@gmail.com',
+            },
         })
 
         return about
@@ -27,7 +26,7 @@ export default class AboutFactory {
      * @memberof AboutFactory
      */
     static async getAbout(): Promise<About> {
-        const about = await prisma.about.findFirst();
+        const about = await prisma.about.findFirst()
 
         return about
     }
@@ -37,14 +36,14 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updateEmail(newEmail: string): Promise<About>  {
+    static async updateEmail(newEmail: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                email: newEmail
-            }
+                email: newEmail,
+            },
         })
 
         return about
@@ -55,14 +54,14 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updatePhone(newPhone: string): Promise<About>  {
+    static async updatePhone(newPhone: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                mobNo: newPhone
-            }
+                mobNo: newPhone,
+            },
         })
 
         return about
@@ -73,14 +72,14 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updateIntro(newIntro: string): Promise<About>  {
+    static async updateIntro(newIntro: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                introduction: newIntro
-            }
+                introduction: newIntro,
+            },
         })
 
         return about
@@ -91,33 +90,32 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updateTwitter(twitter: string): Promise<About>  {
+    static async updateTwitter(twitter: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                twitter: twitter
-            }
+                twitter,
+            },
         })
 
         return about
     }
-
 
     /**
     * Update Linkedin
     * @static
     * @memberof AboutFactory
     */
-    static async updateLinkedin(linkedin: string): Promise<About>  {
+    static async updateLinkedin(linkedin: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                linkedin: linkedin
-            }
+                linkedin,
+            },
         })
 
         return about
@@ -128,14 +126,14 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updateGithub(github: string): Promise<About>  {
+    static async updateGithub(github: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                github: github
-            }
+                github,
+            },
         })
 
         return about
@@ -146,16 +144,16 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-     static async updateSocials(twitter: string, linkedin: string, github: string): Promise<About>  {
+    static async updateSocials(twitter: string, linkedin: string, github: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',
             },
             data: {
-                twitter: twitter,
-                github: github,
-                linkedin: linkedin
-            }
+                twitter,
+                github,
+                linkedin,
+            },
         })
 
         return about

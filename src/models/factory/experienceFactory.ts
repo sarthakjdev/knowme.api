@@ -1,8 +1,7 @@
-import prisma from "@lib/prisma";
-import { Experience } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { Experience } from '@prisma/client'
 
 export default class ExperienceFactory {
-
     /**
      * Add Experience
      * @static
@@ -11,8 +10,8 @@ export default class ExperienceFactory {
     static async addExperience(expData: Experience) {
         const experience = await prisma.blogs.create({
             data: {
-                ...expData
-            }
+                ...expData,
+            },
         })
 
         return experience
@@ -26,8 +25,8 @@ export default class ExperienceFactory {
     static async getExperience(id: number): Promise<Experience> {
         const experience = await prisma.experience.findFirst({
             where: {
-                id: id
-            }
+                id,
+            },
         })
 
         return experience
@@ -52,9 +51,8 @@ export default class ExperienceFactory {
     static async deleteExperience(id: number) {
         await prisma.experience.delete({
             where: {
-                id: id
-            }
+                id,
+            },
         })
     }
-
 }

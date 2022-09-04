@@ -1,5 +1,5 @@
-import prisma from "@lib/prisma";
-import { TechStack } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { TechStack } from '@prisma/client'
 
 export default class TechStackFactory {
     /**
@@ -10,8 +10,8 @@ export default class TechStackFactory {
     static async addTechStack(techStackData: TechStack): Promise<TechStack> {
         const techStack = await prisma.techStack.create({
             data: {
-                ...techStackData
-            }
+                ...techStackData,
+            },
         })
 
         return techStack
@@ -25,8 +25,8 @@ export default class TechStackFactory {
     static async getTechStack(name: string): Promise<TechStack> {
         const techStack = await prisma.techStack.findFirst({
             where: {
-                name: name
-            }
+                name,
+            },
         })
 
         return techStack
@@ -51,8 +51,8 @@ export default class TechStackFactory {
     static async deleteTechStack(name: string): Promise<void> {
         await prisma.techStack.delete({
             where: {
-                name: name
-            }
+                name,
+            },
         })
     }
 }

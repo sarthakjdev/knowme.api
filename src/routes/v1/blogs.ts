@@ -1,12 +1,27 @@
 import express from 'express'
 import blogContoller from '@controllers/v1/blogs'
+import { authorizeAdmin, isAuthenticated } from 'src/middleware/auth'
 
 const router = express.Router()
 
-router.get('/', blogContoller.getBlogs)
-router.post('/', blogContoller.addBlog)
+/**
+ * Get blogs
+ */
+router.get('/:id', blogContoller.getBlogs)
+
+/**
+ * Add blogs
+ */
+router.post('/', isAuthenticated, authorizeAdmin, blogContoller.addBlog)
+
+/**
+ * Get all blogs
+ */
 router.get('/all', blogContoller.getAllBlogs)
-router.get('/:id', blogContoller.getBlogById)
-router.delete('/delete', blogContoller.deleteBlog)
+
+/**
+ * Delete a blog
+ */
+router.delete('/delete', isAuthenticated, authorizeAdmin, blogContoller.deleteBlog)
 
 export default router

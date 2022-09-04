@@ -4,7 +4,6 @@ import { authorizeAdmin, isAuthenticated } from 'src/middleware/auth'
 
 const router = express.Router()
 
-
 /**
  * to get about
  */
@@ -43,6 +42,5 @@ router.put('/updateLinkedin', isAuthenticated, authorizeAdmin, aboutContoller.up
  * to update socials
  */
 router.put('/updateSocials', isAuthenticated, authorizeAdmin, aboutContoller.updateSocials)
-
 
 export default router

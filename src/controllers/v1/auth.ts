@@ -3,10 +3,8 @@ import messages from '@constants/messages'
 import { checkPassword, checkRole, generateHash } from '@helpers/password'
 import config from '@configs/config'
 import { Users } from '@prisma/client'
-import jwt from 'jsonwebtoken'
-import { generateJwt, generateRefreshToken } from '@helpers/authHelpers'
+import { generateJwt } from '@helpers/authHelpers'
 import UserFactory from '@factory/userFactory'
-
 
 export default class AuthController {
     /**
@@ -60,7 +58,6 @@ export default class AuthController {
                 { user_type: dbUser.type, email: dbUser.email },
                 config.JWT_SECRET_KEY,
             )
-
 
             const updatedUser = await UserFactory.updateAuthToken(
                 dbUser,

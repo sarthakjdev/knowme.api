@@ -7,7 +7,6 @@ module.exports = {
     parserOptions: {
         project: './tsconfig.json',
         ecmaVersion: 2021,
-        
     },
     parser: '@typescript-eslint/parser',
     extends: [
@@ -21,7 +20,7 @@ module.exports = {
     ],
     rules: {
         'import/extensions': [
-            'never',
+            0,
             {
                 ts: true,
                 js: true,

@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import messages from "@constants/messages";
-import AboutFactory from "src/models/factory/aboutFactory";
+import { Request, Response } from 'express'
+import messages from '@constants/messages'
+import AboutFactory from 'src/models/factory/aboutFactory'
 
 export default class AboutContoller {
     /**
@@ -10,10 +10,11 @@ export default class AboutContoller {
      */
     static async getAbout(req: Request, res: Response): Promise<Response> {
         try {
-            const about = AboutFactory.getAbout();
-            return res.status(200).json(about);
+            const about = AboutFactory.getAbout()
+
+            return res.status(200).json(about)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -24,9 +25,9 @@ export default class AboutContoller {
      */
     static async updateAbout(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -37,9 +38,9 @@ export default class AboutContoller {
      */
     static async updateEmail(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -50,9 +51,9 @@ export default class AboutContoller {
      */
     static async updatePhone(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -63,9 +64,9 @@ export default class AboutContoller {
      */
     static async updateTwitter(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -76,9 +77,9 @@ export default class AboutContoller {
      */
     static async updateGithub(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -89,9 +90,9 @@ export default class AboutContoller {
      */
     static async updateLinkedin(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 
@@ -102,9 +103,9 @@ export default class AboutContoller {
      */
     static async updateSocials(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic);
+            return res.status(200).send(messages.basic)
         } catch (error) {
-            return res.status(500).send(messages.serverError);
+            return res.status(500).send(messages.serverError)
         }
     }
 }

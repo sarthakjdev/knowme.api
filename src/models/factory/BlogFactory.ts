@@ -1,18 +1,17 @@
-import prisma from "@lib/prisma";
-import { Blogs } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { Blogs } from '@prisma/client'
 
 export default class BlogFactory {
-
     /**
      * Add Blog
      * @static
      * @memberof BlogFactory
      */
-    static async addBlog(blogData: Blogs): Promise<Blogs>  {
+    static async addBlog(blogData: Blogs): Promise<Blogs> {
         const blog = await prisma.blogs.create({
             data: {
-                ...blogData
-            }
+                ...blogData,
+            },
         })
 
         return blog
@@ -23,11 +22,11 @@ export default class BlogFactory {
      * @static
      * @memberof BlogFactory
      */
-    static async getBlog(id: number): Promise<Blogs>  {
+    static async getBlog(id: number): Promise<Blogs> {
         const blog = await prisma.blogs.findFirst({
             where: {
-                id: id
-            }
+                id,
+            },
         })
 
         return blog
@@ -38,7 +37,7 @@ export default class BlogFactory {
     * @static
     * @memberof BlogFactory
     */
-    static async getAllBlogs(): Promise<Blogs[]>  {
+    static async getAllBlogs(): Promise<Blogs[]> {
         const blogs = await prisma.blogs.findMany()
 
         return blogs
@@ -52,9 +51,8 @@ export default class BlogFactory {
     static async deleteBlog(id: number): Promise<void> {
         await prisma.blogs.delete({
             where: {
-                id: id
-            }
+                id,
+            },
         })
     }
-
 }

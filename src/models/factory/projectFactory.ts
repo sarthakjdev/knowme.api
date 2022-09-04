@@ -1,5 +1,5 @@
-import prisma from "@lib/prisma";
-import { Projects } from "@prisma/client";
+import prisma from '@lib/prisma'
+import { Projects } from '@prisma/client'
 
 export default class ProjectFactory {
     /**
@@ -7,11 +7,11 @@ export default class ProjectFactory {
      * @static
      * @memberof ProjectFactory
      */
-     static async addProject(projectData: Projects): Promise<Projects> {
+    static async addProject(projectData: Projects): Promise<Projects> {
         const project = await prisma.projects.create({
             data: {
-                ...projectData
-            }
+                ...projectData,
+            },
         })
 
         return project
@@ -25,8 +25,8 @@ export default class ProjectFactory {
     static async getProject(id: number): Promise<Projects> {
         const project = await prisma.projects.findFirst({
             where: {
-                id: id
-            }
+                id,
+            },
         })
 
         return project
@@ -51,8 +51,8 @@ export default class ProjectFactory {
     static async deleteProject(id: number): Promise<void> {
         await prisma.projects.delete({
             where: {
-                id: id
-            }
+                id,
+            },
         })
     }
 }
