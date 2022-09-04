@@ -19,5 +19,4 @@ router.post('/', aboutContoller.getAbout)
  */
 router.put('/:toupdate', isAuthenticated, authorizeAdmin, aboutContoller.updateAbout)
 
-
 export default router
