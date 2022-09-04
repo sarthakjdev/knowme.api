@@ -17,6 +17,7 @@ router.post('/', aboutContoller.getAbout)
 /**
  * to update about
  */
-router.put('/:toupdate', aboutContoller.updateAbout)
+router.put('/:toupdate', isAuthenticated, authorizeAdmin, aboutContoller.updateAbout)
+
 
 export default router

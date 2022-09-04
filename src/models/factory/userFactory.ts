@@ -14,8 +14,6 @@ export default class UserFactory {
             },
         })
 
-        console.log('user ', user)
-
         return user
     }
 
