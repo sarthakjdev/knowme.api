@@ -4,8 +4,8 @@ import dotenv from 'dotenv/config'
 import config from '@configs/config'
 import cors from 'cors'
 import logger from '@utils/logger'
+import connectDb from '@lib/mongoose'
 import ready from './src/controllers/ready'
-// requiring routes files :
 import serverRoute from './src/routes/index'
 
 const port = config.PORT || 5000
@@ -18,6 +18,6 @@ app.use('/', serverRoute)
 app.get('/', ready)
 
 app.listen(port, () => {
-    // eslint-disable-next-line no-console
+    connectDb()
     logger.info(`Server is listenning on ${port}`)
 })

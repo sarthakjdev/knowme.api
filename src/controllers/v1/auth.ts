@@ -26,12 +26,15 @@ export default class AuthController {
 
             userData.password = hashedPassword
             userData.authToken = token
+            await UserFactory.createUser(userData)
 
             return res.status(201).json({
                 token,
                 message: messages.signup_success,
             })
         } catch (err) {
+            console.log('err ', err)
+
             return res.status(500).send(messages.serverError)
         }
     }
