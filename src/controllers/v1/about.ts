@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import messages from '@constants/messages'
-import AboutFactory from 'src/models/factory/aboutFactory'
+import * as fs from 'fs'
+import * as path from 'path'
+import AboutManager from '@helpers/aboutManager'
 
 export default class AboutContoller {
     /**
@@ -10,22 +12,9 @@ export default class AboutContoller {
      */
     static async getAbout(req: Request, res: Response): Promise<Response> {
         try {
-            const about = AboutFactory.getAbout()
+            const about = fs.readFileSync(path.join(__dirname, '../../data/about.json'))
 
-            return res.status(200).json(about)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
-
-    /**
-     * Update About
-     * @static
-     * @memberof AboutContoller
-     */
-    static async updateAbout(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
+            return res.status(200).json(JSON.parse(about.toString()))
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -36,74 +25,53 @@ export default class AboutContoller {
      * @static
      * @memberof AboutController
      */
-    static async updateEmail(req: Request, res: Response): Promise<Response> {
+    static async updateAbout(req: Request, res: Response): Promise<Response> {
         try {
-            return res.status(200).send(messages.basic)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
+            const { toupdate } = req.params
+            const {
+                email, phone, introduction, twitter, linkedin, github, aboutData,
+            } = req.body
+            let about
+            switch (toupdate) {
+                case 'email':
+                    if (!email) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateEmail(email)
+                    break
+                case 'phone':
+                    if (!phone) return res.status(400).send(messages.badReq)
+                    about = await AboutManager.instance.updatePhone(phone)
+                    break
+                case 'introduction':
+                    if (!introduction) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateEmail(introduction)
+                    break
+                case 'twitter':
+                    if (!twitter) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateTwitter(twitter)
+                    break
+                case 'github':
+                    if (!github) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateGithub(github)
+                    break
+                case 'linkedin':
+                    if (!linkedin) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateLinkedin(linkedin)
+                    break
+                case 'socials':
+                    if (!twitter && !github && !linkedin) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.updateSocials(linkedin, twitter, github)
+                    break
+                case null:
+                    if (!aboutData) return res.status(400).send(messages.badReq)
+                    about = AboutManager.instance.update(aboutData)
+                    break
+                default:
+                    break
+            }
 
-    /**
-     * Update Phone
-     * @static
-     * @memberof AboutController
-     */
-    static async updatePhone(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
+            about = AboutManager.instance.getAbout()
 
-    /**
-     * Update twitter
-     * @static
-     * @memberof AboutController
-     */
-    static async updateTwitter(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
-
-    /**
-     * Update Github
-     * @static
-     * @memberof AboutController
-     */
-    static async updateGithub(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
-
-    /**
-     * Update linkedin
-     * @static
-     * @memberof AboutController
-     */
-    static async updateLinkedin(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
-        } catch (error) {
-            return res.status(500).send(messages.serverError)
-        }
-    }
-
-    /**
-     * update socials
-     * @static
-     * @memberof AboutContoller
-     */
-    static async updateSocials(req: Request, res: Response): Promise<Response> {
-        try {
-            return res.status(200).send(messages.basic)
+            return res.status(200).json(about)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

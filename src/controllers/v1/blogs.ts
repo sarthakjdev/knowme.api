@@ -10,7 +10,13 @@ export default class BlogContoller {
      */
     static async getBlogs(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const { id } = req.params
+            if (!id) return res.status(400).send(messages.badReq)
+
+            const blog = await BlogFactory.getBlog(Number(id))
+            if (!blog) return res.status(400).send(messages.notFound)
+
+            return res.status(200).json(blog)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -38,7 +44,13 @@ export default class BlogContoller {
      */
     static async addBlog(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const blogData = req.body
+
+            if (!blogData.title || !blogData.description || !blogData.tenure) return res.status(400).send(messages.badReq)
+
+            const blog = await BlogFactory.addBlog(blogData)
+
+            return res.status(200).json(blog)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -51,7 +63,12 @@ export default class BlogContoller {
      */
     static async deleteBlog(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const { id } = req.params
+            if (!id) return res.status(400).send(messages.badReq)
+
+            await BlogFactory.deleteBlog(Number(id))
+
+            return res.status(200).send(messages.success)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

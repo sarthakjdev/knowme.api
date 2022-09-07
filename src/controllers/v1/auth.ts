@@ -26,12 +26,15 @@ export default class AuthController {
 
             userData.password = hashedPassword
             userData.authToken = token
+            await UserFactory.createUser(userData)
 
             return res.status(201).json({
                 token,
                 message: messages.signup_success,
             })
         } catch (err) {
+            console.log('err ', err)
+
             return res.status(500).send(messages.serverError)
         }
     }
@@ -43,7 +46,7 @@ export default class AuthController {
      */
     static async signIn(req: Request, res: Response) {
         try {
-            const { email, userType, password } = req.body
+            const { email, type, password } = req.body
             const dbUser = await UserFactory.getUser(email)
             if (!dbUser) return res.status(404).send(messages.notFound)
 
@@ -51,7 +54,7 @@ export default class AuthController {
                 password,
                 dbUser.password,
             )
-            const verifiedRole = await checkRole(dbUser, userType)
+            const verifiedRole = await checkRole(dbUser, type)
             if (!isAuthenticated || !verifiedRole) return res.status(404).send('Invalid Username/password')
 
             const token = await generateJwt(

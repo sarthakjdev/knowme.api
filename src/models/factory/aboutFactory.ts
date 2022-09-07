@@ -144,7 +144,7 @@ export default class AboutFactory {
      * @static
      * @memberof AboutFactory
      */
-    static async updateSocials(twitter: string, linkedin: string, github: string): Promise<About> {
+    static async updateSocials(twitter?: string, linkedin?: string, github?: string): Promise<About> {
         const about = await prisma.about.update({
             where: {
                 name: 'Sarthak Jain',

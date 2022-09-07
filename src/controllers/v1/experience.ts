@@ -16,7 +16,7 @@ export default class ExperienceController {
             const experience = await ExperienceFactory.getExperience(Number(id))
             if (!experience) return res.status(400).send(messages.notFound)
 
-            return res.status(200).send(experience)
+            return res.status(200).json(experience)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -32,7 +32,7 @@ export default class ExperienceController {
             const experiences = await ExperienceFactory.getAllExperience()
             if (!experiences) return res.status(400).send(messages.notFound)
 
-            return res.status(200).send(experiences)
+            return res.status(200).json(experiences)
 
             return res.status(200).send(messages.basic)
         } catch (error) {
@@ -47,6 +47,9 @@ export default class ExperienceController {
      */
     static async updateExperience(req: Request, res: Response) {
         try {
+            const { id } = req.params
+            if (!id) return res.status(400).send(messages.badReq)
+
             return res.status(200).send(messages.basic)
         } catch (error) {
             return res.status(500).send(messages.serverError)
@@ -60,7 +63,13 @@ export default class ExperienceController {
      */
     static async addExperience(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const experienceData = req.body
+
+            if (!experienceData.title || !experienceData.description || !experienceData.tenure) return res.status(400).send(messages.badReq)
+
+            const experience = await ExperienceFactory.addExperience(experienceData)
+
+            return res.status(200).json(experience)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -73,7 +82,12 @@ export default class ExperienceController {
      */
     static async deleteExperience(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const { id } = req.params
+            if (!id) return res.status(400).send(messages.badReq)
+
+            await ExperienceFactory.deleteExperience(Number(id))
+
+            return res.status(200).send(messages.success)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

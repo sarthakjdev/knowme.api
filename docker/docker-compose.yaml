@@ -1,17 +1,18 @@
-version: '3.9'
-
+version: '3.8'
 services:
-  mongo:
-    container_name: knowme-api-mongo
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: knowme
-      MONGO_INITDB_ROOT_PASSWORD: knowme
-      MONGO_INITDB_DATABASE: knowme
-    volumes:
-      - knowme-data:/var/lib/mongodb/data 
-    ports:
-      - "27017:27017"
   
+  database:
+    image: 'bitnami/mongodb:latest'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=127.0.0.1
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ROOT_USER=knowme
+      - MONGODB_ROOT_PASSWORD=knowme
+      - MONGODB_REPLICA_SET_KEY=knowmereplica
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo-db:/bitnami/mongodb'
+
 volumes:
-  knowme-data:
+  mongo-db:
