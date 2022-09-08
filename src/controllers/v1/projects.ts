@@ -17,6 +17,8 @@ export default class ProjectController {
 
             return res.status(200).json(project)
         } catch (error) {
+            console.log('error ', error)
+
             return res.status(500).send(messages.serverError)
         }
     }
@@ -32,6 +34,8 @@ export default class ProjectController {
 
             return res.status(200).json(projects)
         } catch (error) {
+            console.log('error ', error)
+
             return res.status(500).send(messages.serverError)
         }
     }

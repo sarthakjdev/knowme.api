@@ -7,12 +7,12 @@ const router = express.Router()
 /**
  * get project
  */
-router.get('/', projectController.getProject)
+router.get('/:id', projectController.getProject)
 
 /**
  * get all projects
  */
-router.get('/', isAuthenticated, authorizeAdmin, projectController.getProject)
+router.get('/', isAuthenticated, authorizeAdmin, projectController.getAllProjects)
 
 /**
  * Add project
@@ -22,11 +22,11 @@ router.post('/', isAuthenticated, authorizeAdmin, projectController.addProject)
 /**
  * Update project
  */
-router.put('/update', isAuthenticated, authorizeAdmin, projectController.updateProject)
+router.put('/:id', isAuthenticated, authorizeAdmin, projectController.updateProject)
 
 /**
  * Delete a project
  */
-router.delete('/', isAuthenticated, authorizeAdmin, projectController.deleteProject)
+router.delete('/:id', isAuthenticated, authorizeAdmin, projectController.deleteProject)
 
 export default router

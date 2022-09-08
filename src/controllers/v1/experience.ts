@@ -33,8 +33,6 @@ export default class ExperienceController {
             if (!experiences) return res.status(400).send(messages.notFound)
 
             return res.status(200).json(experiences)
-
-            return res.status(200).send(messages.basic)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

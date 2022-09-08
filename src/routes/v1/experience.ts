@@ -12,7 +12,7 @@ router.get('/:id', experienceController.getExperience)
 /**
  * Get all Experiences
  */
-router.get('/all', experienceController.getAllExperience)
+router.get('/', experienceController.getAllExperience)
 
 /**
  * Add Experience

@@ -11,7 +11,7 @@
     "build": "tsc",
     "start": " npm run build && node -r ./prod-paths.ts ./dist/index.js NODE_ENV=production",
     "dev:db": "docker-compose -f ./docker/docker-compose.yaml down && docker-compose -f ./docker/docker-compose.yaml up -d ",
-    "dev": "ts-node-dev -r  tsconfig-paths/register --respawn --max-old-space-size=4076 ./index.ts",
+    "dev": "ts-node-dev -r  tsconfig-paths/register --respawn --exit-child --max-old-space-size=4076 ./index.ts",
     "dev:db-server": "npm run dev:db && npm run dev",
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
