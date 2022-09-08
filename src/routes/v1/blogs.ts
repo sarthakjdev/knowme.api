@@ -10,18 +10,23 @@ const router = express.Router()
 router.get('/:id', blogContoller.getBlogs)
 
 /**
- * Add blogs
- */
-router.post('/', isAuthenticated, authorizeAdmin, blogContoller.addBlog)
-
-/**
  * Get all blogs
  */
 router.get('/all', blogContoller.getAllBlogs)
 
 /**
+ * Add blogs
+ */
+router.post('/', isAuthenticated, authorizeAdmin, blogContoller.addBlog)
+
+/**
  * Delete a blog
  */
-router.delete('/delete', isAuthenticated, authorizeAdmin, blogContoller.deleteBlog)
+router.delete('/:id', isAuthenticated, authorizeAdmin, blogContoller.deleteBlog)
+
+/**
+ * Update a blog
+ */
+router.put('/:id', isAuthenticated, authorizeAdmin)
 
 export default router

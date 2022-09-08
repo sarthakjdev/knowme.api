@@ -24,7 +24,7 @@
             "@lib/*": ["./src/lib/*"],
             "@factory/*": ["./src/models/factory/*"],
             "@api/*": ["./src/models/api/*"],
-            "@helpers/*": ["./src/helpers/*"],
+            "@helpers/*": ["./src/helpers/*"]
 
         },
         "typeRoots": ["./global.d.ts"]
