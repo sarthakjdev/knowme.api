@@ -22,7 +22,7 @@ export default class BlogFactory {
      * @static
      * @memberof BlogFactory
      */
-    static async getBlog(id: number): Promise<Blogs> {
+    static async getBlog(id: string): Promise<Blogs> {
         const blog = await prisma.blogs.findFirst({
             where: {
                 id,
@@ -48,7 +48,7 @@ export default class BlogFactory {
      * @static
      * @memberof BlogFactory
      */
-    static async deleteBlog(id: number): Promise<void> {
+    static async deleteBlog(id: string): Promise<void> {
         await prisma.blogs.delete({
             where: {
                 id,

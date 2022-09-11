@@ -10,6 +10,8 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') })
 interface ENV {
     PORT: number | undefined;
     NODE_ENV: string | undefined
+    TWITTER_API_ACCESS_TOKEN: string | undefined
+    TWITTER_API_ACCESS_TOKEN_SECRET: string | undefined
     TWITTER_API_KEY: string | undefined
     TWITTER_API_KEY_SECRET: string | undefined
     TWITTER_API_BEARER_TOKEN: string | undefined
@@ -24,6 +26,8 @@ interface ENV {
 
 interface Config {
     PORT: number
+    TWITTER_API_ACCESS_TOKEN: string
+    TWITTER_API_ACCESS_TOKEN_SECRET: string
     TWITTER_API_KEY: string
     TWITTER_API_KEY_SECRET: string
     TWITTER_API_BEARER_TOKEN: string
@@ -41,6 +45,8 @@ interface Config {
 const getConfig = (): ENV => ({
     PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
     NODE_ENV: process.env.NODE_ENV,
+    TWITTER_API_ACCESS_TOKEN: process.env.TWITTER_API_ACCESS_TOKEN,
+    TWITTER_API_ACCESS_TOKEN_SECRET: process.env.TWITTER_API_ACCESS_TOKEN_SECRET,
     TWITTER_API_KEY: process.env.TWITTER_API_KEY,
     TWITTER_API_KEY_SECRET: process.env.TWITTER_API_KEY_SECRET,
     TWITTER_API_BEARER_TOKEN: process.env.TWITTER_API_BEARER_TOKEN,

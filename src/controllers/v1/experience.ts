@@ -13,7 +13,7 @@ export default class ExperienceController {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            const experience = await ExperienceFactory.getExperience(Number(id))
+            const experience = await ExperienceFactory.getExperience(id)
             if (!experience) return res.status(400).send(messages.notFound)
 
             return res.status(200).json(experience)
@@ -83,7 +83,7 @@ export default class ExperienceController {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            await ExperienceFactory.deleteExperience(Number(id))
+            await ExperienceFactory.deleteExperience(id)
 
             return res.status(200).send(messages.success)
         } catch (error) {

@@ -1,4 +1,5 @@
 import { twitterAxiosClient } from '@utils/axiosClient'
+import configs from '@configs/config'
 
 export default class Twitter {
     /**
@@ -35,9 +36,10 @@ export default class Twitter {
      * @memberof Twitter
      */
     public async getAllTweets() {
-        const tweets = await Twitter.axiosClient.post('tweets')
+        const profile = await this.getMyProfile()
+        const tweets = await Twitter.axiosClient.get('/tweets?ids=1556000785141342208')
 
-        return tweets
+        return tweets.data
     }
 
     /**
@@ -46,9 +48,9 @@ export default class Twitter {
      * @returns
      */
     public async getTweetById(id: string) {
-        const tweet = await Twitter.axiosClient.post(`/tweets/${id}`)
+        const tweet = await Twitter.axiosClient.get(`/tweets/${id}`)
 
-        return tweet
+        return tweet.data.data
     }
 
     /**
@@ -56,9 +58,47 @@ export default class Twitter {
      * @returns
      */
     public async getMyProfile() {
-        const profile = await Twitter.axiosClient.get('/me')
+        const filedsToAdd = {
+            'user.fields': [
+                'created_at',
+                'description',
+                'entities',
+                'id',
+                'location',
+                'name',
+                'pinned_tweet_id',
+                'profile_image_url',
+                'protected',
+                'public_metrics',
+                'url',
+                'username',
+                'verified',
+                'withheld',
+            ],
+            'tweet.fields': [
+                'attachments',
+                'author_id',
+                'conversation_id',
+                'created_at',
+                'id',
+                'source',
+                'text',
+            ],
+        }
+        let userFields: string
+        let tweetFields: string
+        // eslint-disable-next-line array-callback-return
+        filedsToAdd['user.fields'].map((field) => {
+            userFields += `${field},`
+        })
 
-        return profile
+        // eslint-disable-next-line array-callback-return
+        filedsToAdd['tweet.fields'].map((field) => {
+            tweetFields += field
+        })
+        const profile = await Twitter.axiosClient.get(`/users/by/username/:${configs.TWITTER_USERNAME}`)
+
+        return profile.data.console.errors
     }
 
     /**
