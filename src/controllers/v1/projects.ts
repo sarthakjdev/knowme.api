@@ -13,12 +13,10 @@ export default class ProjectController {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            const project = await ProjectFactory.getProject(Number(id))
+            const project = await ProjectFactory.getProject(id)
 
             return res.status(200).json(project)
         } catch (error) {
-            console.log('error ', error)
-
             return res.status(500).send(messages.serverError)
         }
     }
@@ -34,8 +32,6 @@ export default class ProjectController {
 
             return res.status(200).json(projects)
         } catch (error) {
-            console.log('error ', error)
-
             return res.status(500).send(messages.serverError)
         }
     }
@@ -85,7 +81,7 @@ export default class ProjectController {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            await ProjectFactory.deleteProject(Number(id))
+            await ProjectFactory.deleteProject(id)
 
             return res.status(200).send(messages.success)
         } catch (error) {

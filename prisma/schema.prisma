@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Users {
-  id        String    @id @map("_id") @db.ObjectId @default(auto())
+  id        String    @id @map("_id")  @db.ObjectId @default(auto())
   email     String    @unique
   name      String?
   password  String
@@ -24,7 +24,8 @@ model Users {
 }
 
 model TechStack {
-  name      String   @id @map("_id") @db.ObjectId
+  id        String   @id @map("_id") @db.ObjectId @default(auto())
+  name      String   @unique
   docs      String?
   exp       Int?
   createdAt DateTime @default(now())
@@ -34,30 +35,23 @@ model TechStack {
 }
 
 model Projects {
-  id            Int      @id @map("_id")
-  title         String
+  id            String      @id @map("_id") @db.ObjectId @default(auto())
+  title         String      @unique
   description   String?
-  techStackUsed String?
+  techStackUsed String[]
   tenure        String?
+  githubRepo    String?
+  liveurl       String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now()) @updatedAt
 
   @@map("projects")
 }
 
-model TechStackInProjects {
-  techstack String   @id @map("_id")
-  projectId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  @@index([projectId, techstack])
-  @@map("techstackinprojects")
-}
-
 model Blogs {
-  id        Int      @id @map("_id")
-  title     String
+  id        String      @id @map("_id") @db.ObjectId @default(auto())
+  topic     String       
+  title     String       @unique
   subtitle  String?
   content   String?
   images    String[]
@@ -68,7 +62,7 @@ model Blogs {
 }
 
 model Experience {
-  id        Int      @id @map("_id")
+  id        String      @id @map("_id") @db.ObjectId @default(auto())
   title     String
   subtitle  String?
   desc      String?

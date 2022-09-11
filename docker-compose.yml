@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: knowme_api
+    image: sarthakjdev/knowme
+    ports: 
+    - 3000:3000
+    env_file: './.env'
+
+  nginx: 
+    container_name: nginx_service
+    build: './nginx/'
+    ports:
+      - 80:80
+    restart: always
+
+    

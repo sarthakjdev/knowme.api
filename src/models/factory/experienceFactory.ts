@@ -8,7 +8,7 @@ export default class ExperienceFactory {
      * @memberof ExperienceFactory
      */
     static async addExperience(expData: Experience) {
-        const experience = await prisma.blogs.create({
+        const experience = await prisma.experience.create({
             data: {
                 ...expData,
             },
@@ -22,7 +22,7 @@ export default class ExperienceFactory {
      * @static
      * @memberof ExperienceFactory
      */
-    static async getExperience(id: number): Promise<Experience> {
+    static async getExperience(id: string): Promise<Experience> {
         const experience = await prisma.experience.findFirst({
             where: {
                 id,
@@ -48,7 +48,7 @@ export default class ExperienceFactory {
      * @static
      * @memberof ExperienceFactory
      */
-    static async deleteExperience(id: number) {
+    static async deleteExperience(id: string) {
         await prisma.experience.delete({
             where: {
                 id,

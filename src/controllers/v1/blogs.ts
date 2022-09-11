@@ -13,7 +13,7 @@ export default class BlogContoller {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            const blog = await BlogFactory.getBlog(Number(id))
+            const blog = await BlogFactory.getBlog(id)
             if (!blog) return res.status(400).send(messages.notFound)
 
             return res.status(200).json(blog)
@@ -66,7 +66,7 @@ export default class BlogContoller {
             const { id } = req.params
             if (!id) return res.status(400).send(messages.badReq)
 
-            await BlogFactory.deleteBlog(Number(id))
+            await BlogFactory.deleteBlog(id)
 
             return res.status(200).send(messages.success)
         } catch (error) {

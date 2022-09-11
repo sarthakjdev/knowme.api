@@ -25,10 +25,25 @@ export default class TwitterController {
      */
     static async getTweetById(req: Request, res: Response) {
         try {
-            const { id } = req.query
+            const { id } = req.params
             const tweet = await Twitter.instance.getTweetById(id as string)
 
             return res.status(200).json(tweet)
+        } catch (error) {
+            return res.status(500).send(messages.serverError)
+        }
+    }
+
+    /**
+     *  Get profile
+     * @static
+     * @memberof TwitterController
+     */
+    static async getProfile(req: Request, res: Response) {
+        try {
+            const profile = await Twitter.instance.getMyProfile()
+
+            return res.status(200).json(profile)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -41,7 +56,7 @@ export default class TwitterController {
      */
     static async deleteTweet(req: Request, res: Response) {
         try {
-            const { id } = req.query
+            const { id } = req.params
 
             await Twitter.instance.deleteTweet(id as string)
 

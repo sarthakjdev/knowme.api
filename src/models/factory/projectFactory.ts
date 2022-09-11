@@ -22,7 +22,7 @@ export default class ProjectFactory {
      * @static
      * @memberof ProjectFactory
      */
-    static async getProject(id: number): Promise<Projects> {
+    static async getProject(id: string): Promise<Projects> {
         const project = await prisma.projects.findFirst({
             where: {
                 id,
@@ -48,7 +48,7 @@ export default class ProjectFactory {
      * @static
      * @memberof ProjectFactory
      */
-    static async deleteProject(id: number): Promise<void> {
+    static async deleteProject(id: string): Promise<void> {
         await prisma.projects.delete({
             where: {
                 id,

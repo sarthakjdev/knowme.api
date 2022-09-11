@@ -12,7 +12,7 @@ router.get('/:id', projectController.getProject)
 /**
  * get all projects
  */
-router.get('/', isAuthenticated, authorizeAdmin, projectController.getAllProjects)
+router.get('/random', isAuthenticated, authorizeAdmin, projectController.getAllProjects)
 
 /**
  * Add project
