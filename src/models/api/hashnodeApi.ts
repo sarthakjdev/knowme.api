@@ -31,45 +31,45 @@ export default class Hashnode {
         return this.tInstance
     }
 
-    /**
-     * get all blogs
-     * @memberof Hashnode
-     */
-    public async getAllBlogs() {
+    // /**
+    //  * get all blogs
+    //  * @memberof Hashnode
+    //  */
+    // public async getAllBlogs() {
 
-    }
+    // }
 
-    /**
-     * get tweet by id
-     * @param {string} id
-     * @returns
-     */
-    public async getTweetById(id: string) {
+    // /**
+    //  * get tweet by id
+    //  * @param {string} id
+    //  * @returns
+    //  */
+    // public async getTweetById(id: string) {
 
-    }
+    // }
 
-    /**
-     * get my profile
-     * @returns
-     */
-    public async getMyProfile() {
+    // /**
+    //  * get my profile
+    //  * @returns
+    //  */
+    // public async getMyProfile() {
 
-    }
+    // }
 
-    /**
-     * create a tweet
-     * @param {object} tweetContent
-     * @returns
-     */
-    public async createTweet(tweetContent) {
+    // /**
+    //  * create a tweet
+    //  * @param {object} tweetContent
+    //  * @returns
+    //  */
+    // public async createTweet(tweetContent) {
 
-    }
+    // }
 
-    /**
-     * delete a tweet
-     * @param {string} id
-     */
-    public async deleteTweet(id: string):Promise<void> {
+    // /**
+    //  * delete a tweet
+    //  * @param {string} id
+    //  */
+    // public async deleteTweet(id: string):Promise<void> {
 
-    }
+    // }
 }
