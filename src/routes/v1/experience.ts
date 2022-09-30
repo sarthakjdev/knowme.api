@@ -5,14 +5,14 @@ import { authorizeAdmin, isAuthenticated } from 'src/middleware/auth'
 const router = express.Router()
 
 /**
- * Get Experience
- */
-router.get('/:id', experienceController.getExperience)
-
-/**
  * Get all Experiences
  */
 router.get('/', experienceController.getAllExperience)
+
+/**
+ * Get Experience
+ */
+router.get('/:id', experienceController.getExperience)
 
 /**
  * Add Experience

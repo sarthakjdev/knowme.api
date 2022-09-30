@@ -4,15 +4,34 @@ services:
   api:
     container_name: knowme_api
     image: sarthakjdev/knowme
-    ports: 
-    - 3000:3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - "database"
     env_file: './.env'
+    restart: always
+    command: sh -c "npm run db-migrate && npm run start"
 
-  nginx: 
+  nginx:
     container_name: nginx_service
     build: './nginx/'
     ports:
       - 80:80
     restart: always
 
-    
+  database:
+    image: 'bitnami/mongodb:latest'
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=127.0.0.1
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ROOT_USER=knowme
+      - MONGODB_ROOT_PASSWORD=knowme
+      - MONGODB_REPLICA_SET_KEY=knowmereplica
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo-db:/bitnami/mongodb'
+    restart: always
+
+volumes:
+  mongo-db:

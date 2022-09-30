@@ -5,14 +5,14 @@ import { authorizeAdmin, isAuthenticated } from 'src/middleware/auth'
 const router = express.Router()
 
 /**
+ * Get all blogs
+ */
+router.get('/', blogContoller.getAllBlogs)
+
+/**
  * Get blogs
  */
 router.get('/:id', blogContoller.getBlogs)
-
-/**
- * Get all blogs
- */
-router.get('/all', blogContoller.getAllBlogs)
 
 /**
  * Add blogs
