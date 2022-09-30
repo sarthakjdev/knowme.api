@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
+RUN npm run db-generate
 
 RUN npm run build
 
@@ -25,7 +25,6 @@ ENV HASHNODE_BASE_URL ${HASHNODE_BASE_URL}
 ENV OEMBED_BASE_URL ${OEMBED_BASE_URL}
 ENV TWITTER_USERNAME ${TWITTER_USERNAME}
 ENV JWT_SECRET_KEY ${JWT_SECRET_KEY}
-
 
 EXPOSE 3000
 

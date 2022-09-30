@@ -73,7 +73,11 @@ export default class TwitterController {
      */
     static async addTweet(req: Request, res: Response) {
         try {
-            return res.status(200).send(messages.basic)
+            const { text } = req.body
+            const tweet = await Twitter.instance.createTweet(text)
+            console.log('tweet ', tweet.data)
+
+            return res.status(200).json(tweet.data)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
