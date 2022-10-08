@@ -9,8 +9,10 @@ export default class TwitterController {
      * @memberof TwitterController
      */
     static async getTweets(req: Request, res: Response) {
+        console.log('req ', req)
         try {
             const tweets = await Twitter.instance.getAllTweets()
+            console.log('tweets ', tweets)
 
             return res.status(200).json(tweets)
         } catch (error) {
@@ -35,7 +37,7 @@ export default class TwitterController {
     }
 
     /**
-     *  Get profile
+     * Get profile
      * @static
      * @memberof TwitterController
      */

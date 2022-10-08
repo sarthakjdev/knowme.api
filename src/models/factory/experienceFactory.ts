@@ -23,13 +23,17 @@ export default class ExperienceFactory {
      * @memberof ExperienceFactory
      */
     static async getExperience(id: string): Promise<Experience> {
-        const experience = await prisma.experience.findFirst({
-            where: {
-                id,
-            },
-        })
+        try {
+            const experience = await prisma.experience.findFirst({
+                where: {
+                    id,
+                },
+            })
 
-        return experience
+            return experience
+        } catch (error) {
+            return undefined
+        }
     }
 
     /**
@@ -39,6 +43,24 @@ export default class ExperienceFactory {
     */
     static async getAllExperience() {
         const experience = await prisma.experience.findMany()
+
+        return experience
+    }
+
+    /**
+     * Update Experience
+     * @static
+     * @memberof ExperienceFactory
+     */
+    static async updateExperience(expData: Experience) {
+        const experience = await prisma.experience.update({
+            where: {
+                id: expData.id,
+            },
+            data: {
+                ...expData,
+            },
+        })
 
         return experience
     }

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import messages from '@constants/messages'
 import ExperienceFactory from '@factory/experienceFactory'
+import { Experience } from '@prisma/client'
 
 export default class ExperienceController {
     /**
@@ -45,10 +46,15 @@ export default class ExperienceController {
      */
     static async updateExperience(req: Request, res: Response) {
         try {
-            const { id } = req.params
-            if (!id) return res.status(400).send(messages.badReq)
+            const { id, updateExperienceData } = req.params
 
-            return res.status(200).send(messages.basic)
+            let dbExperience = await ExperienceFactory.getExperience(id)
+
+            dbExperience = updateExperienceData as any
+
+            const experience = await ExperienceFactory.updateExperience(dbExperience)
+
+            return res.status(200).send(experience)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -61,13 +67,15 @@ export default class ExperienceController {
      */
     static async addExperience(req: Request, res: Response) {
         try {
-            const experienceData = req.body
+            const experiencesData: Experience[] = req.body
 
-            if (!experienceData.title || !experienceData.description || !experienceData.tenure) return res.status(400).send(messages.badReq)
+            let experiences: Experience[]
+            experiencesData.map(async (exp) => {
+                const dbExperience = await ExperienceFactory.addExperience(exp)
+                experiences.push(dbExperience)
+            })
 
-            const experience = await ExperienceFactory.addExperience(experienceData)
-
-            return res.status(200).json(experience)
+            return res.status(200).json(experiences)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

@@ -41,7 +41,7 @@ model Projects {
   techStackUsed String[]
   tenure        String?
   githubRepo    String?
-  liveurl       String?
+  liveUrl       String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now()) @updatedAt
 
@@ -66,6 +66,8 @@ model Experience {
   title     String
   subtitle  String?
   desc      String?
+  logo      String?
+  timeSpan  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 }

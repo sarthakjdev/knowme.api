@@ -22,6 +22,9 @@ interface ENV {
     TWITTER_USERNAME: string | undefined
     JWT_SECRET_KEY: string | undefined
     DATABASE_URL: string | undefined
+    DYTE_BASE_URL: string | undefined
+    DYTE_API_KEY: string | undefined
+    DYTE_ORGANISATION_ID: string | undefined
 }
 
 interface Config {
@@ -38,6 +41,9 @@ interface Config {
     TWITTER_USERNAME: string
     JWT_SECRET_KEY: string
     DATABASE_URL: string
+    DYTE_BASE_URL: string
+    DYTE_API_KEY: string
+    DYTE_ORGANISATION_ID: string
 
 }
 
@@ -57,6 +63,9 @@ const getConfig = (): ENV => ({
     TWITTER_USERNAME: process.env.TWITTER_USERNAME,
     JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
     DATABASE_URL: process.env.DATABASE_URL,
+    DYTE_BASE_URL: process.env.DYTE_BASE_URL,
+    DYTE_API_KEY: process.env.DYTE_API_KEY,
+    DYTE_ORGANISATION_ID: process.env.DYTE_ORGANISATION_ID,
 })
 
 // Throwing an Error if any field was undefined we don't

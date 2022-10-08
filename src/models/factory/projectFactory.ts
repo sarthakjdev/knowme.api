@@ -44,6 +44,24 @@ export default class ProjectFactory {
     }
 
     /**
+     * Update Project
+     * @static
+     * @memberof ProjectFactory
+     */
+    static async updateProject(projectData: Projects): Promise<Projects> {
+        const project = await prisma.projects.update({
+            where: {
+                id: projectData.id,
+            },
+            data: {
+                ...projectData,
+            },
+        })
+
+        return project
+    }
+
+    /**
      * Delete Project
      * @static
      * @memberof ProjectFactory
