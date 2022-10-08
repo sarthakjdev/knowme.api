@@ -1,5 +1,6 @@
 import { twitterAxiosClient } from '@utils/axiosClient'
 import configs from '@configs/config'
+import logger from '@utils/logger'
 
 export default class Twitter {
     /**
@@ -36,9 +37,15 @@ export default class Twitter {
      * @memberof Twitter
      */
     public async getAllTweets() {
-        const tweets = await Twitter.axiosClient.get(`/users/${configs.TWITTER_USER_ID}/tweets?max_results=100&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,attachments.poll_ids,author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id,referenced_tweets.id,referenced_tweets.id.author_id`)
+        try {
+            const tweets = await Twitter.axiosClient.get(`/users/${configs.TWITTER_USER_ID}/tweets?max_results=100&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,attachments.poll_ids,author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id,referenced_tweets.id,referenced_tweets.id.author_id`)
 
-        return tweets.data
+            return tweets.data
+        } catch (error) {
+            logger.error(error)
+
+            return undefined
+        }
     }
 
     /**
@@ -47,9 +54,15 @@ export default class Twitter {
      * @returns
      */
     public async getTweetById(id: string) {
-        const tweet = await Twitter.axiosClient.get(`/tweets/${id}`)
+        try {
+            const tweet = await Twitter.axiosClient.get(`/tweets/${id}`)
 
-        return tweet.data.data
+            return tweet.data.dat
+        } catch (error) {
+            logger.error(error)
+
+            return undefined
+        }
     }
 
     /**

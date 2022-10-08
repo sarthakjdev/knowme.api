@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import messages from '@constants/messages'
 import ProjectFactory from '@factory/projectFactory'
+import { Projects } from '@prisma/client'
 
 export default class ProjectController {
     /**
@@ -43,10 +44,15 @@ export default class ProjectController {
      */
     static async updateProject(req: Request, res: Response) {
         try {
-            const { id } = req.params
-            if (!id) return res.status(400).send(messages.badReq)
+            const { id, updateProjectData } = req.params
 
-            return res.status(200).send(messages.basic)
+            let dbProject = await ProjectFactory.getProject(id)
+
+            dbProject = updateProjectData as any
+
+            const project = await ProjectFactory.updateProject(dbProject)
+
+            return res.status(200).send(project)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }
@@ -59,13 +65,16 @@ export default class ProjectController {
      */
     static async addProject(req: Request, res: Response) {
         try {
-            const projectData = req.body
+            const projecstData: Projects[] = req.body
 
-            if (!projectData.title || !projectData.description || !projectData.tenure) return res.status(400).send(messages.badReq)
+            let projects: Projects[]
 
-            const project = await ProjectFactory.addProject(projectData)
+            projecstData.map(async (project) => {
+                const dbProject = await ProjectFactory.addProject(project)
+                projects.push(dbProject)
+            })
 
-            return res.status(200).json(project)
+            return res.status(200).json(projects)
         } catch (error) {
             return res.status(500).send(messages.serverError)
         }

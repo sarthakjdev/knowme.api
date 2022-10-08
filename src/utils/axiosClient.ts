@@ -12,3 +12,10 @@ export const oEmbedClient = axios.create({
     baseURL: config.OEMBED_BASE_URL,
 })
 
+export const dyteClient = axios.create({
+    baseURL: config.DYTE_BASE_URL,
+    headers: {
+        Authorization: `Bearer ${config.DYTE_API_KEY}`,
+    },
+})
+
