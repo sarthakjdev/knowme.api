@@ -3,7 +3,7 @@ version: '3.9'
 services:
   api:
     container_name: knowme_api
-    image: sarthakjdev/knowme
+    image: sarthakjdev/knowme:latest
     ports:
       - 3000:3000
     depends_on:
