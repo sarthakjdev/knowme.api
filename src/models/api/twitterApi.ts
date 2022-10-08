@@ -38,12 +38,10 @@ export default class Twitter {
      */
     public async getAllTweets() {
         try {
-            const tweets = await Twitter.axiosClient.get(`/users/${configs.TWITTER_USER_ID}/tweets?max_results=100&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,attachments.poll_ids,author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id,referenced_tweets.id,referenced_tweets.id.author_id`)
+            const { data } = await Twitter.axiosClient.get(`/users/${configs.TWITTER_USER_ID}/tweets?max_results=100&tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,public_metrics,referenced_tweets,reply_settings,source,text,withheld&expansions=attachments.media_keys,attachments.poll_ids,author_id,entities.mentions.username,geo.place_id,in_reply_to_user_id,referenced_tweets.id,referenced_tweets.id.author_id`)
 
-            return tweets.data
+            return data.data
         } catch (error) {
-            logger.error(error)
-
             return undefined
         }
     }
@@ -55,9 +53,9 @@ export default class Twitter {
      */
     public async getTweetById(id: string) {
         try {
-            const tweet = await Twitter.axiosClient.get(`/tweets/${id}`)
+            const { data } = await Twitter.axiosClient.get(`/tweets/${id}`)
 
-            return tweet.data.dat
+            return data.data
         } catch (error) {
             logger.error(error)
 
@@ -73,9 +71,9 @@ export default class Twitter {
         const userFields = 'created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,public_metrics,url,username,verified,withheld'
         const tweetFields = 'attachments,author_id,conversation_id,created_at,id,source,text'
 
-        const profile = await Twitter.axiosClient.get(`/users/by/username/${configs.TWITTER_USERNAME}?user.fields=${userFields}&tweet.fields=${tweetFields}`)
+        const { data } = await Twitter.axiosClient.get(`/users/by/username/${configs.TWITTER_USERNAME}?user.fields=${userFields}&tweet.fields=${tweetFields}`)
 
-        return profile.data.data
+        return data.data
     }
 
     /**
