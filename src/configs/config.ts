@@ -25,6 +25,8 @@ interface ENV {
     DYTE_BASE_URL: string | undefined
     DYTE_API_KEY: string | undefined
     DYTE_ORGANISATION_ID: string | undefined
+    GOOGLE_CLIENT_ID: string | undefined
+    GOOGLE_CLIENT_SECRET: string | undefined
 }
 
 interface Config {
@@ -44,7 +46,8 @@ interface Config {
     DYTE_BASE_URL: string
     DYTE_API_KEY: string
     DYTE_ORGANISATION_ID: string
-
+    GOOGLE_CLIENT_ID: string
+    GOOGLE_CLIENT_SECRET: string
 }
 
 // Loading process.env as ENV interface
@@ -66,6 +69,8 @@ const getConfig = (): ENV => ({
     DYTE_BASE_URL: process.env.DYTE_BASE_URL,
     DYTE_API_KEY: process.env.DYTE_API_KEY,
     DYTE_ORGANISATION_ID: process.env.DYTE_ORGANISATION_ID,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
 })
 
 // Throwing an Error if any field was undefined we don't

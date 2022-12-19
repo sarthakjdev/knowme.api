@@ -1,0 +1,52 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/assets": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definition": {
+    "openapi": "3.0.3",
+    "info": {
+      "title": "knowme.API api doc",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "components": {
+      "securitySchema": {
+        "bearerAuth": {
+          "type": "http",
+          "schema": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  },
+  "apis": [
+    "/home/sarthak/projects/knowme.api/src/routes/v1/index.ts"
+  ]
+}

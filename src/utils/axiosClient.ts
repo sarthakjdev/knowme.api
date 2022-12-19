@@ -15,7 +15,7 @@ export const oEmbedClient = axios.create({
 export const dyteClient = axios.create({
     baseURL: config.DYTE_BASE_URL,
     headers: {
-        Authorization: `Bearer ${config.DYTE_API_KEY}`,
+        Authorization: `${config.DYTE_API_KEY}`,
     },
 })
 

@@ -23,6 +23,8 @@ export async function isAuthenticated(req: Request, res: Response, next: NextFun
 
         return res.status(400).send(messages.unauthorized_req)
     } catch (error) {
+        console.log('error ', error)
+
         return res.status(500).send(messages.serverError)
     }
 }

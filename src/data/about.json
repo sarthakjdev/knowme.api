@@ -1,1 +1,26 @@
-{"name":"Sarthak Jain","email":"contact.sarthakjain@gmail.com","mobNo":9643500545,"intro":"Hey everyone, I am Sarthak. I am from Delhi.I am a freelance full-stack developer and discord bot developer,I majorly work with react ecosystem & nodejs at the backend with TS and looking forward to exploring more in the future. ","twitter":"https://twitter.com/sarthakjdev","github":"https://github.com/sarthakjdev","linkedin":"https://www.linkedin.com/in/sarthakjdev", "resume": "https://drive.google.com/file/d/1G9_RTIF72k7sm0m92_5kI0TslNj3gOwq/view?usp=sharing"  }
+[
+    {
+        "title": "Rejoice Bot",          
+        "description": "",
+        "techStackUsed": ["nodejs", "discordjs", "mongodb", "prisma", "typescript"],
+        "tenure": "4 months",        
+        "githubRepo": "https://github.com/sarthakjdev/rejoice-bot",    
+        "liveUrl": ""    
+    },
+    {
+        "title": "Rejoice Bot",          
+        "description": "",
+        "techStackUsed": ["nodejs", "discordjs", "mongodb", "prisma", "typescript"],
+        "tenure": "4 months",        
+        "githubRepo": "https://github.com/sarthakjdev/rejoice-bot",    
+        "liveUrl": ""    
+    },
+    {
+        "title": "Knowme.API",          
+        "description": "",
+        "techStackUsed": ["nodejs", "discordjs", "mongodb", "prisma", "typescript"],
+        "tenure": "4 months",        
+        "githubRepo": "https://github.com/sarthakjdev/rejoice-bot",    
+        "liveUrl": ""    
+    }
+]
